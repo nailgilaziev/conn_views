@@ -12,11 +12,11 @@ dependencies:
     sdk: flutter
   provider: ^4.0.2
   conn_core:
-    path: ../conn_core
+    git: git@github.com:nailgilaziev/conn_core.git
   time_utils:
-    path: ../time_utils
+    git: git@github.com:nailgilaziev/time_utils.git
   common_widgets:
-    path: ../common_widgets
+    git: git@github.com:nailgilaziev/common_widgets.git
 
 dev_dependencies:
   flutter_test:
