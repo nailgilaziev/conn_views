@@ -1,4 +1,3 @@
-import 'package:app_logs/app_logs.dart';
 import 'package:common_widgets/labeled_checkbox.dart';
 import 'package:conn_core/conn_core.dart';
 import 'package:flutter/material.dart';
@@ -38,16 +37,16 @@ class ConnManagePanel extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
-                          RaisedButton(
+                          ElevatedButton(
                             child: const Text('connect'),
                             onPressed: connectCallback,
                           ),
                           const SizedBox(width: 8),
-                          RaisedButton(
+                          ElevatedButton(
                               child: const Text('disconnect'),
                               onPressed: closeCallback),
                           const SizedBox(width: 8),
-                          RaisedButton(
+                          ElevatedButton(
                               child: const Text('logs'),
                               onPressed: () => throw UnimplementedError()),
                         ],
