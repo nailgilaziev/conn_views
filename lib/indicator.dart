@@ -1,9 +1,9 @@
+import 'package:app_logs/app_logs.dart';
 import 'package:conn_core/conn_core.dart';
 import 'package:conn_views/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:time_utils/functions.dart';
-import 'package:app_logs/app_logs.dart';
 
 class ConnIndicator extends StatelessWidget {
   const ConnIndicator({this.idleTitle});
@@ -148,7 +148,7 @@ class ConnIndicator extends StatelessWidget {
     });
   }
 
-  void _showMsg(BuildContext context, String msg, [Iterable<String> logs]) =>
+  void _showMsg(BuildContext context, String msg, [Iterable<LogItem> logs]) =>
       showDialog<String>(
           context: context,
           builder: (BuildContext context) {
@@ -174,7 +174,7 @@ class ConnIndicator extends StatelessWidget {
           });
 
   Column errorInfoWidget(
-      String msg, Iterable<String> logs, BuildContext context) {
+      String msg, Iterable<LogItem> logs, BuildContext context) {
     Color levelColor(String l) {
       final darkMode =
           MediaQuery.of(context).platformBrightness == Brightness.dark;
@@ -210,14 +210,14 @@ class ConnIndicator extends StatelessWidget {
             child: RichText(
               textAlign: TextAlign.left,
               text: TextSpan(
-                text: l.substring(0, 22),
+                text: l.toString().substring(0, 22),
                 style: TextStyle(fontSize: 6, color: levelColor(null)),
                 children: [
                   TextSpan(
-                    text: l.substring(22, l.length),
+                    text: l.toString().substring(22, l.toString().length),
                     style: TextStyle(
                       fontSize: 8,
-                      color: levelColor(l[17]),
+                      color: levelColor(l.toString()[17]),
                     ),
                   )
                 ],
