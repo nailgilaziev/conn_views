@@ -8,14 +8,14 @@ class ConnManagePanel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<LineConnectivityStatus>(
       builder:
-          (BuildContext context, LineConnectivityStatus line, Widget child) {
+          (BuildContext context, LineConnectivityStatus line, Widget? child) {
         return Consumer<WsConnectionService>(
           builder: (context, conn, _) {
             final connectCallback = !line.manualConnectAvailable
                 ? null
                 : () => conn.manualConnect();
             final closeCallback =
-            !line.manualCloseAvailable ? null : () => conn.manualClose();
+                !line.manualCloseAvailable ? null : () => conn.manualClose();
 
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +76,7 @@ class __AutoReconnectParamsPanelState extends State<_AutoReconnectParamsPanel> {
   @override
   Widget build(BuildContext context) {
     return Consumer<AutoReconnect>(
-      builder: (BuildContext context, AutoReconnect conf, Widget child) {
+      builder: (BuildContext context, AutoReconnect conf, Widget? child) {
         controllerAttemptsCount.text = conf.immediatelyAttempts.toString();
         controllerSecs.text = conf.waitingSecs.toString();
         return Column(
@@ -84,7 +84,7 @@ class __AutoReconnectParamsPanelState extends State<_AutoReconnectParamsPanel> {
             LabeledCheckbox(
               title: 'auto reconnect on failure',
               value: conf.on,
-              onChanged: (bool v) => conf.on = v,
+              onChanged: (bool? v) => conf.on = v ?? false,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,

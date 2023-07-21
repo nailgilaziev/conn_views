@@ -4,12 +4,18 @@ packages:
   app_logs:
     dependency: transitive
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "7e6e7add92d9c86c7a995aa4d965bb3cf52a8752"
-      url: "git@github.com:nailgilaziev/app_logs.git"
-    source: git
+      path: "../app_logs"
+      relative: true
+    source: path
     version: "0.0.1"
+  args:
+    dependency: transitive
+    description:
+      name: args
+      sha256: eef6c46b622e0494a36c5a12d10d77fb4e855501a91c1b9ef9339326e58f0596
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.2"
   async:
     dependency: transitive
     description:
@@ -64,38 +70,30 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
-  connectivity:
+  connectivity_plus:
     dependency: transitive
     description:
-      name: connectivity
-      sha256: "63c75e3b899f89b4f3c0ed2aedb1a2833bb04cb141d74718bf8f38b1d23f7a32"
+      name: connectivity_plus
+      sha256: b74247fad72c171381dbe700ca17da24deac637ab6d43c343b42867acb95c991
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.9+5"
-  connectivity_for_web:
+    version: "3.0.6"
+  connectivity_plus_platform_interface:
     dependency: transitive
     description:
-      name: connectivity_for_web
-      sha256: a90f39f9e2c9533a189b05596ce2eea9494b61efa34a78f079ba06fa4c50075d
+      name: connectivity_plus_platform_interface
+      sha256: cf1d1c28f4416f8c654d7dc3cd638ec586076255d407cef3ddbdaf178272a71a
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.1+4"
-  connectivity_macos:
+    version: "1.2.4"
+  dbus:
     dependency: transitive
     description:
-      name: connectivity_macos
-      sha256: "2ac537281b02e1117f50b154bd5a6b18cb889d6c18e2f415104886e4d2b6549e"
+      name: dbus
+      sha256: "6f07cba3f7b3448d42d015bfd3d53fe12e5b36da2423f23838efc1d5fb31a263"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.0+7"
-  connectivity_platform_interface:
-    dependency: transitive
-    description:
-      name: connectivity_platform_interface
-      sha256: "3e3c0891ec5d22c0e265b0df5743810c91160a30ac4f3327cf04fd24782e8add"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.6"
+    version: "0.7.8"
   fake_async:
     dependency: transitive
     description:
@@ -104,6 +102,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.1"
+  ffi:
+    dependency: transitive
+    description:
+      name: ffi
+      sha256: ed5337a5660c506388a9f012be0288fb38b49020ce2b45fe1f8b8323fe429f99
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -166,6 +172,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+  nm:
+    dependency: transitive
+    description:
+      name: nm
+      sha256: "2c9aae4127bdc8993206464fcc063611e0e36e72018696cd9631023a31b24254"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.0"
   path:
     dependency: transitive
     description:
@@ -174,22 +188,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.2"
+  petitparser:
+    dependency: transitive
+    description:
+      name: petitparser
+      sha256: "49392a45ced973e8d94a85fdb21293fbb40ba805fc49f2965101ae748a3683b4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.1.0"
   plugin_platform_interface:
     dependency: transitive
     description:
       name: plugin_platform_interface
-      sha256: c3ebbff365bfb1b5f7b690c9857d2dabea167f35b05eb7586186499b407efb37
+      sha256: "6a2128648c854906c53fa8e33986fc0247a1116122f9534dd20e3ab9e16a32bc"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.3"
+    version: "2.1.4"
   provider:
     dependency: "direct main"
     description:
       name: provider
-      sha256: af58e866ea76fa7d156ea5e6ffa1c28b52dabff5c87fbdf265f7c6adaa7a741d
+      sha256: "59471e0a4595e264625d3496af567ac85bdae1148ec985aff1e0555786f53ecf"
       url: "https://pub.dev"
     source: hosted
-    version: "4.3.3"
+    version: "5.0.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -258,6 +280,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  xml:
+    dependency: transitive
+    description:
+      name: xml
+      sha256: "979ee37d622dec6365e2efa4d906c37470995871fe9ae080d967e192d88286b5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.2.2"
 sdks:
-  dart: ">=2.18.0 <3.0.0"
-  flutter: ">=1.16.0"
+  dart: ">=2.19.0 <3.0.0"
+  flutter: ">=2.11.0"

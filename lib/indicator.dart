@@ -8,7 +8,7 @@ import 'package:time_utils/functions.dart';
 class ConnIndicator extends StatelessWidget {
   const ConnIndicator({this.idleTitle});
 
-  final String idleTitle;
+  final String? idleTitle;
 
   String lineStatusToString(LineStatus ls) {
     switch (ls) {
@@ -32,12 +32,12 @@ class ConnIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String mapLineStatus(LineStatus ls) {
-      if (ls == LineStatus.idle && idleTitle != null) return idleTitle;
+      if (ls == LineStatus.idle && idleTitle != null) return idleTitle!;
       return lineStatusToString(ls);
     }
 
     return Consumer<LineConnectivityStatus>(builder:
-        (BuildContext context, LineConnectivityStatus line, Widget child) {
+        (BuildContext context, LineConnectivityStatus line, Widget? child) {
       final iconPlaceholder = Container(
         width: 48,
         height: 48,
@@ -45,7 +45,7 @@ class ConnIndicator extends StatelessWidget {
 
       Widget central() {
         if (line.status == LineStatus.waiting)
-          return const _ReconnectWaitingLabel();
+          return _ReconnectWaitingLabel(line: line);
         if (line.status == LineStatus.searching) return _SearchingLabel();
         return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Text(
@@ -148,7 +148,7 @@ class ConnIndicator extends StatelessWidget {
     });
   }
 
-  void _showMsg(BuildContext context, String msg, [Iterable<LogItem> logs]) =>
+  void _showMsg(BuildContext context, String msg, [Iterable<LogItem>? logs]) =>
       showDialog<String>(
           context: context,
           builder: (BuildContext context) {
@@ -164,7 +164,7 @@ class ConnIndicator extends StatelessWidget {
                     child: SingleChildScrollView(
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: errorInfoWidget(msg, logs, context),
+                        child: errorInfoWidget(msg, logs ?? [], context),
                       ),
                     ),
                   ),
@@ -175,20 +175,20 @@ class ConnIndicator extends StatelessWidget {
 
   Column errorInfoWidget(
       String msg, Iterable<LogItem> logs, BuildContext context) {
-    Color levelColor(String l) {
+    Color levelColor(String? l) {
       final darkMode =
           MediaQuery.of(context).platformBrightness == Brightness.dark;
       switch (l) {
         case 'E':
-          return darkMode ? Colors.red[400] : Colors.red[700];
+          return darkMode ? Colors.red[400]! : Colors.red[700]!;
         case 'W':
-          return darkMode ? Colors.orange[300] : Colors.orange[800];
+          return darkMode ? Colors.orange[300]! : Colors.orange[800]!;
         case 'S':
-          return darkMode ? Colors.green[300] : Colors.green[800];
+          return darkMode ? Colors.green[300]! : Colors.green[800]!;
         case 'I':
           return darkMode ? Colors.white : Colors.black;
         default:
-          return darkMode ? Colors.grey[400] : Colors.grey[800];
+          return darkMode ? Colors.grey[400]! : Colors.grey[800]!;
       }
     }
 
@@ -242,7 +242,8 @@ class _SearchingLabel extends StatelessWidget {
 }
 
 class _ReconnectWaitingLabel extends StatelessWidget {
-  const _ReconnectWaitingLabel({Key key, this.line}) : super(key: key);
+  const _ReconnectWaitingLabel({Key? key, required this.line})
+      : super(key: key);
   final LineConnectivityStatus line;
 
   @override
@@ -255,7 +256,7 @@ class _ReconnectWaitingLabel extends StatelessWidget {
         final subtitle = '${txt.secsBeforeReconnect} $time';
 
         return ThreeRowWidget(
-            title: title, subtitle: subtitle, lastSyncWidget: child);
+            title: title, subtitle: subtitle, lastSyncWidget: child!);
       },
       child: LastSyncTextLabel(),
     );
@@ -264,10 +265,10 @@ class _ReconnectWaitingLabel extends StatelessWidget {
 
 class ThreeRowWidget extends StatelessWidget {
   const ThreeRowWidget(
-      {Key key,
-      @required this.title,
-      @required this.subtitle,
-      this.lastSyncWidget})
+      {Key? key,
+      required this.title,
+      required this.subtitle,
+      required this.lastSyncWidget})
       : super(key: key);
   final String title;
   final String subtitle;
@@ -298,7 +299,7 @@ class LastSyncTextLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<LineConnectivityStatus>(builder: (context, line, _) {
       if (line.lastSync == null) return SizedBox.shrink();
-      final s = formattedDateTime(line.lastSync, adaptiveToNow: true);
+      final s = formattedDateTime(line.lastSync!, adaptiveToNow: true);
       return Text(
         '${txt.lastSyncPrefix}: $s',
         style: const TextStyle(fontSize: 8),

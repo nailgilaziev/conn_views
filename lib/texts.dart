@@ -5,10 +5,11 @@ const _langs = {'en': 0, 'ru': 1, 'de': 2};
 Texts get txt => Texts.instance;
 
 class Texts {
-
   /// Use before accessing / initializing to instance
   static void setLocale(String localeCode) {
-    _ = _langs[localeCode];
+    assert(_langs.containsKey(localeCode),
+        'localeCode=$localeCode does not supported');
+    _ = _langs[localeCode]!;
     _instance = Texts();
   }
 
@@ -81,7 +82,7 @@ class Texts {
     'Подключено',
     'Verbunden',
   ][_];
-  final fetchedCounts= [
+  final fetchedCounts = [
     'Pieces downloaded',
     'Скачано данных',
     'Heruntergeladene Stücke',
