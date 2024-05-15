@@ -1,6 +1,6 @@
 /// index [EN,RU,...]
 int _ = 1;
-const _langs = {'en': 0, 'ru': 1, 'de': 2};
+const _langs = {'en': 0, 'ru': 1, 'de': 2, 'kk': 3,};
 
 Texts get txt => Texts.instance;
 
@@ -8,7 +8,7 @@ class Texts {
   /// Use before accessing / initializing to instance
   static void setLocale(String localeCode) {
     assert(_langs.containsKey(localeCode),
-        'localeCode=$localeCode does not supported');
+    'localeCode=$localeCode does not supported');
     _ = _langs[localeCode]!;
     _instance = Texts();
   }
@@ -21,71 +21,83 @@ class Texts {
     'Disconnected',
     'Не подключено',
     'Keine Verbindung',
+    'Ажыратылған'
   ][_];
 
   final connecting = [
     'Connecting',
     'Подключение',
     'Verbindung',
+    'Қосылуда'
   ][_];
 
   final fetching = [
     'Fetching',
     'Обновление',
     'Aktualisierung',
+    'Жаңарту'
   ][_];
 
   final disconnecting = [
     'Disconnecting',
     'Отключение',
     'Abbruch',
+    'Ажыратылуда'
   ][_];
 
   final problemsTitle = [
     'Connection problem',
     'Проблема с соединением',
     'Verbindungsprobleme',
+    'Қосылым мәселесі'
   ][_];
 
   final maintenanceTitle = [
     'Service maintenance',
     'Обслуживание системы',
     'Systemwartung',
+    'Жүйеге техникалық қызмет көрсету'
   ][_];
 
   final secsBeforeReconnect = [
     'Retrying after',
     'Повторная попытка через',
     'Erneuter Versuch nach',
+    'Кейін қайталау'
   ][_];
 
   final searchingTitle = [
     'Network waiting',
     'Ожидание сети',
     'Warte auf Netz',
+    'Желіні күту'
   ][_];
 
   final searchingSubtitle = [
     'Provide access',
     'Обеспечьте доступ',
     'Zugang gewähren',
+    'Қол жеткізуді қамтамасыз ету'
   ][_];
 
   final lastSyncPrefix = [
     'Synchronized',
     'Cинхронизировано',
     'Synchroniziert',
+    'Синхрондалған'
   ][_];
 
   final idle = [
     'Connected',
     'Подключено',
     'Verbunden',
+    'Қосылды'
   ][_];
   final fetchedCounts = [
     'Pieces downloaded',
     'Скачано данных',
     'Heruntergeladene Stücke',
+    'Деректер жүктелді'
   ][_];
 
   final searchingExplanation = [
@@ -112,5 +124,12 @@ Bitte sicherstellen, dass das System keine Einschränkungen für den Zugang zum 
 
 Übersetzt mit www.DeepL.com/Translator (kostenlose Version)
     ''',
+    '''Қазіргі уақытта Wi-Fi немесе ұялы байланыс жоқ.
+Кем дегенде бір интернетке кіру арнасын қамтамасыз етіңіз.
+Ұшақ режимі қосылса, ұялы желі қолжетімсіз болады,
+бірақ бар болса, Wi-Fi қосылымдарын пайдалануға болады.
+Құрылғыңызда желіге кіруді шектеу механизмдері болса,
+қолданбаға барлық рұқсаттардың берілгенін тексеріңіз.
+Жүйеде интернетке кіруге ешқандай шектеулер жоқ екеніне көз жеткізіңіз'''
   ][_];
 }
